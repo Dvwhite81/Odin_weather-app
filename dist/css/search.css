@@ -38,7 +38,7 @@ body {
     border-radius: 100px;
 	grid-area: search;
 	overflow: visible;
-	color: hsl(215, 100%, 50%);
+	color: black;
 	fill: none;
 	stroke: currentColor;
 	width: 100%;

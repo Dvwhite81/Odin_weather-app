@@ -101,9 +101,9 @@ const parseForecast = (weather) => {
     weather.list[5],
     weather.list[7],
   ];
-  morning.timeName = "Tomorrow 6:00 am";
-  noon.timeName = "Tomorrow 12:00 pm";
-  evening.timeName = "Tomorrow 6:00 pm";
+  morning.timeName = "6:00 am";
+  noon.timeName = "12:00 pm";
+  evening.timeName = "6:00 pm";
 
   document.querySelector(".forecast-results").innerHTML = "";
   const times = [morning, noon, evening];
