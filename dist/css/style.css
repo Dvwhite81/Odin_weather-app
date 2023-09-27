@@ -9,6 +9,12 @@
     display: grid;
 }
 
+#form {
+    display: grid;
+}
+
+/* Searchbar css - /dist/css/search.css */
+
 .main {
     display: grid;
 }
