@@ -13,7 +13,7 @@ html {
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-body, h1, h2, h3, h4, p,
+body, h1, h2, h3, h4, h5, p,
 figure, blockquote, dl, dd {
   margin: 0;
 }
@@ -31,14 +31,14 @@ body {
 }
 
 /* Set shorter line heights on headings and interactive elements */
-h1, h2, h3, h4,
+h1, h2, h3, h4, h5,
 button, input, label {
   line-height: 1.1;
 }
 
 /* Balance text wrapping on headings */
 h1, h2,
-h3, h4 {
+h3, h4, h5 {
   text-wrap: balance;
 }
 

@@ -47,11 +47,11 @@ const buildTomorrowSection = (timeName, temp, description, iconUrl) => {
   const forecastResults = buildElement("div", {
     className: "forecast-results",
   });
-  const nameEl = buildElement("h3", {
+  const nameEl = buildElement("h4", {
     className: "forecast-name",
     textContent: timeName,
   });
-  const tempEl = buildElement("h4", {
+  const tempEl = buildElement("h5", {
     className: "forecast-temp",
     textContent: temp,
   });

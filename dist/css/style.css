@@ -58,6 +58,7 @@
 }
 
 .forecast-results {
+  gap: 0.5rem;
   justify-content: center;
   margin: auto;
   width: 30%;

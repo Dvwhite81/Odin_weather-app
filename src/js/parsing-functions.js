@@ -58,7 +58,7 @@ const parseInput = async (value) => {
 
     const times = [morning, noon, evening];
     buildForecastSection();
-    times.forEach((time) => setForecast(time));
+    times.forEach(async (time) => await setForecast(time));
   };
 
   const setForecast = (time) => {
@@ -72,5 +72,6 @@ const parseInput = async (value) => {
   };
 
   export {
-    getInput
+    getInput,
+    parseInput
   }

@@ -27,6 +27,7 @@ body {
   align-self: center;
   background: none;
   border: none;
+  color: white;
   font: 24px/1 system-ui, sans-serif;
   grid-area: search;
   justify-self: center;

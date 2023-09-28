@@ -1,3 +1,6 @@
+  import { parseInput } from "./parsing-functions";
+  let count;
+
   const getCurrentWeather = async (currentUrl, value) => {
     const results = await tryCatch(currentUrl, value);
     return results;
@@ -21,7 +24,7 @@
         let splitComma = value.split(",")[0];
         let splitEquals = splitComma.split("=");
         value = splitEquals[1];
-        parseInput(value);
+        await parseInput(value);
       }
       const weather = await data.json();
       return weather;
