@@ -2,9 +2,10 @@ let count;
 const initialSetup = () => {
   // Wait until after animation to change background color
   const svg = document.querySelector("svg");
-  const input = document.getElementById('search-input');
+  const input = document.getElementById("search-input");
   setTimeout(() => {
     svg.style.backgroundColor = "white";
+    svg.style.color = "black";
     input.setAttribute("placeholder", "Enter a city or zip");
   }, 4000);
 
@@ -31,7 +32,7 @@ const parseInput = async (value) => {
   }
 
   const current = await getCurrentWeather(value);
-  displayCurrentWeather(current);
+  setCurrentWeather(current);
 
   const forecastValue = `lat=${current.coord.lat}&lon=${current.coord.lon}`;
   const forecast = await getForecastWeather(forecastValue);
@@ -78,21 +79,33 @@ const tryCatch = async (url, value) => {
   }
 };
 
-const displayCurrentWeather = (weather) => {
+const setCurrentWeather = (weather) => {
   const cityName = weather.name;
   const temp = weather.main.temp + "°F";
   const description = weather.weather[0].description;
   const icon = weather.weather[0].icon;
   const iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
 
-  const nameEl = document.getElementById("city-name");
-  nameEl.textContent = cityName;
-  const tempEl = document.getElementById("current-temp");
-  tempEl.textContent = temp;
-  const descriptionEl = document.getElementById("current-description");
-  descriptionEl.textContent = description;
-  const iconEl = document.getElementById("current-icon");
-  iconEl.src = iconUrl;
+  buildCurrentSection(cityName, temp, description, iconUrl);
+};
+
+const buildCurrentSection = (cityName, temp, description, iconUrl) => {
+  const main = document.querySelector(".main");
+  main.innerHTML = "";
+
+  const conditions = buildElement("h1", { textContent: "Current Conditions:" });
+  main.append(conditions);
+
+  const currentResults = buildElement("div", { className: "current-results" });
+  const nameEl = buildElement("h2", { id: "city-name", textContent: cityName });
+  const tempEl = buildElement("h3", { id: "current-temp", textContent: temp });
+  const descriptionEl = buildElement("p", {
+    id: "current-description",
+    textContent: description,
+  });
+  const iconEl = buildElement("img", { id: "current-icon", src: iconUrl });
+  currentResults.append(nameEl, tempEl, descriptionEl, iconEl);
+  main.append(currentResults);
 };
 
 const parseForecast = (weather) => {
@@ -105,39 +118,56 @@ const parseForecast = (weather) => {
   noon.timeName = "12:00 pm";
   evening.timeName = "6:00 pm";
 
-  document.querySelector(".forecast-results").innerHTML = "";
   const times = [morning, noon, evening];
-  times.forEach((time) => displayForecast(time));
+  buildForecastSection();
+  times.forEach((time) => setForecast(time));
 };
 
-const displayForecast = (time) => {
+const buildForecastSection = () => {
+    const main = document.querySelector(".main");
+    const tmwDiv = buildElement("div", { className: "tomorrow" });
+    const tmwH2 = buildElement("h2", { textContent: "Tomorrow:" });
+    const tmwSection = buildElement("div", {className: "tomorrow-forecasts"});
+
+    tmwDiv.append(tmwH2, tmwSection);
+
+    main.append(tmwDiv);
+}
+
+const setForecast = (time) => {
   const timeName = time.timeName;
   const temp = time.main.temp + "°F";
   const description = time.weather[0].description;
   const icon = time.weather[0].icon;
   const iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
 
-  const div = document.querySelector(".forecast-results");
-  const timeDiv = buildElement("div", { className: "forecast-time" });
-  const nameEl = buildElement("h3", {
-    className: "forecast-name",
-    textContent: timeName,
-  });
-  const tempEl = buildElement("h4", {
-    className: "forecast-temp",
-    textContent: temp,
-  });
-  const descriptionEl = buildElement("p", {
-    className: "forecast-description",
-    textContent: description,
-  });
-  const iconEl = buildElement("img", {
-    className: "current-icon",
-    src: iconUrl,
-  });
-  timeDiv.append(nameEl, tempEl, descriptionEl, iconEl);
-  div.append(timeDiv);
+  buildTomorrowSection(timeName, temp, description, iconUrl);
 };
+
+const buildTomorrowSection = (timeName, temp, description, iconUrl) => {
+    const tmwSection = document.querySelector(".tomorrow-forecasts");
+    const forecastResults = buildElement("div", {
+        className: "forecast-results",
+      });
+      const nameEl = buildElement("h3", {
+        className: "forecast-name",
+        textContent: timeName,
+      });
+      const tempEl = buildElement("h4", {
+        className: "forecast-temp",
+        textContent: temp,
+      });
+      const descriptionEl = buildElement("p", {
+        className: "forecast-description",
+        textContent: description,
+      });
+      const iconEl = buildElement("img", {
+        className: "current-icon",
+        src: iconUrl,
+      });
+      forecastResults.append(nameEl, tempEl, descriptionEl, iconEl);
+      tmwSection.append(forecastResults);
+}
 
 const buildElement = (type, args) => {
   const element = document.createElement(type);

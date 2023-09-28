@@ -18,30 +18,31 @@ body {
 }
 
 #search {
-	  border-radius: 100px;
-    display: grid;
-    margin: auto;
+  border-radius: 100px;
+  display: grid;
+  margin: auto;
 }
 
 #search input {
-	  align-self: center;
-    background: none;
-    border: none;
-    font: 24px/1 system-ui, sans-serif;
-    grid-area: search;
-    justify-self: center;
-    outline: none;
-    width: 70%;
+  align-self: center;
+  background: none;
+  border: none;
+  font: 24px/1 system-ui, sans-serif;
+  grid-area: search;
+  justify-self: center;
+  outline: none;
+  text-align: center;
+  width: 70%;
 }
 
 #search svg {
-    border-radius: 100px;
-	grid-area: search;
-	overflow: visible;
-	color: black;
-	fill: none;
-	stroke: currentColor;
-	width: 100%;
+  border-radius: 100px;
+  grid-area: search;
+  overflow: visible;
+  color: white;
+  fill: none;
+  stroke: currentColor;
+  width: 100%;
 }
 
 .spark {

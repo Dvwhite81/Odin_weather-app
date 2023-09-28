@@ -22,7 +22,7 @@
     text-align: center;
 }
 
-.current-results, .forecast-time {
+.current-results, .forecast-results {
     align-items: center;
     background: rgba(0,0,0,0.2);
     border-radius: 10px;
@@ -37,11 +37,16 @@
     width: 50vw;
 }
 
-.forecast-results {
+.tomorrow {
+    display: flex;
+    flex-direction: column;
+}
+
+.tomorrow-forecasts {
     display: flex;
 }
 
-.forecast-time {
+.forecast-results {
     justify-content: center;
     margin: auto;
     width: 33%;
