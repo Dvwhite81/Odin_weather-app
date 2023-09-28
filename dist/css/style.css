@@ -1,53 +1,71 @@
 .container {
-    background: url(https://images.pexels.com/photos/1431822/pexels-photo-1431822.jpeg?auto=compress&cs=tinysrgb&w=600);
-    background-size: cover;
-    display: grid;
-    grid-template-rows: 10% 90%;
-    min-height: 100vh;
+  background: url(/src/images/top-view-water-texture-wallpaper.jpg);
+  background-size: cover;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  min-height: 100vh;
 }
 
 .navbar {
-    display: grid;
+  display: grid;
 }
 
 #form {
-    display: grid;
+  display: grid;
+}
+
+::placeholder {
+  color: white;
 }
 
 /* Searchbar css - /dist/css/search.css */
 
 .main {
-    color: azure;
-    display: grid;
-    text-align: center;
+  color: white;
+  display: grid;
+  text-align: center;
 }
 
-.current-results, .forecast-results {
-    align-items: center;
-    background: rgba(0,0,0,0.2);
-    border-radius: 10px;
-    color: ghostwhite;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto 1rem auto;
+.current-results,
+.forecast-results {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .current-results {
-    max-width: 300px;
-    width: 50vw;
+  max-width: 300px;
+  width: 50vw;
 }
 
 .tomorrow {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+#tomorrow-h2 {
+  display: flex;
+  margin: 0.5rem auto;
 }
 
 .tomorrow-forecasts {
-    display: flex;
+  display: flex;
 }
 
 .forecast-results {
-    justify-content: center;
-    margin: auto;
-    width: 33%;
+  justify-content: center;
+  margin: auto;
+  width: 30%;
+}
+
+.animation-div {
+  background: url("https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif") center no-repeat;
+  display: none;
+  width: 100%;
+  z-index: 1;
 }
